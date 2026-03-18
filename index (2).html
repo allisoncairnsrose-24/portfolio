@@ -7,7 +7,7 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
+ 
   body {
     background: #fff;
     color: #000;
@@ -16,9 +16,9 @@
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
-
+ 
   a { color: inherit; }
-
+ 
   /* PASSWORD GATE */
   #gate {
     position: fixed; inset: 0; background: #fff; z-index: 9999;
@@ -43,7 +43,7 @@
   #gate-submit:hover { opacity: 0.4; }
   #gate-error { font-size: 0.78rem; opacity: 0; transition: opacity 0.2s; }
   #gate-error.visible { opacity: 0.5; }
-
+ 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -56,7 +56,7 @@
   .nav-links { display: flex; gap: 2.5rem; }
   .nav-links a { text-decoration: none; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.4; transition: opacity 0.15s; }
   .nav-links a:hover { opacity: 1; }
-
+ 
   /* HERO */
   .hero {
     padding: 10rem 2.5rem 6rem;
@@ -89,7 +89,7 @@
     transition: opacity 0.15s;
   }
   .hero-cta:hover { opacity: 0.4; }
-
+ 
   /* WORK */
   #work { padding: 5rem 2.5rem; }
   .work-header {
@@ -99,7 +99,7 @@
     padding-bottom: 1rem;
   }
   .work-heading { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-
+ 
   /* FILTER */
   .filter-tabs { display: flex; gap: 1.5rem; flex-wrap: wrap; }
   .filter-btn {
@@ -110,7 +110,7 @@
   }
   .filter-btn:hover, .filter-btn.active { opacity: 1; }
   .filter-btn.active { font-weight: 700; }
-
+ 
   /* CARDS TABLE */
   .work-table { width: 100%; border-collapse: collapse; }
   .work-row {
@@ -120,7 +120,7 @@
   .work-row:hover { background: #f7f7f7; }
   .work-row td { padding: 1.6rem 1rem 1.6rem 0; vertical-align: top; }
   .work-row td:last-child { padding-right: 0; }
-
+ 
   .col-index { width: 3rem; font-size: 0.72rem; opacity: 0.3; padding-top: 1.8rem; }
   .col-tag { width: 14rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.45; padding-top: 1.85rem; }
   .col-title { font-size: 1.05rem; font-weight: 700; }
@@ -129,7 +129,7 @@
   .col-desc { font-size: 0.83rem; opacity: 0.5; line-height: 1.6; margin-top: 0.35rem; max-width: 480px; }
   .col-award { font-size: 0.72rem; opacity: 0.6; margin-top: 0.4rem; }
   .col-role { width: 13rem; font-size: 0.75rem; opacity: 0.4; line-height: 1.6; padding-top: 1.85rem; text-align: right; }
-
+ 
   /* ABOUT */
   #about {
     border-top: 1px solid #000;
@@ -141,13 +141,13 @@
   .about-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
   .about-body { font-size: 0.92rem; line-height: 1.8; opacity: 0.55; max-width: 440px; }
   .about-body p + p { margin-top: 1rem; }
-
+ 
   .skills-table { width: 100%; border-collapse: collapse; margin-top: 0; }
   .skills-table tr { border-bottom: 1px solid #e5e5e5; }
   .skills-table td { padding: 0.9rem 0; font-size: 0.83rem; }
   .skills-table td:first-child { font-weight: 700; }
   .skills-table td:last-child { text-align: right; opacity: 0.4; font-size: 0.75rem; }
-
+ 
   /* CONTACT */
   #contact {
     border-top: 1px solid #000;
@@ -163,9 +163,9 @@
     border-bottom: 2px solid #000; padding-bottom: 2px; transition: opacity 0.15s;
   }
   .contact-link:hover { opacity: 0.4; }
-
+ 
   footer { border-top: 1px solid #e5e5e5; padding: 1.2rem 2.5rem; display: flex; justify-content: space-between; font-size: 0.72rem; opacity: 0.35; }
-
+ 
   @media (max-width: 768px) {
     nav { padding: 1rem 1.25rem; }
     .nav-links { display: none; }
@@ -184,7 +184,7 @@
 </style>
 </head>
 <body>
-
+ 
 <!-- PASSWORD GATE -->
 <div id="gate">
   <h1>Allison<br>Rose</h1>
@@ -195,11 +195,11 @@
     <span id="gate-error">Incorrect password.</span>
   </div>
 </div>
-
+ 
 <script>
   // Change the password below
   const PASSWORD = "sayhi";
-
+ 
   function checkPassword() {
     const val = document.getElementById('gate-input').value;
     const err = document.getElementById('gate-error');
@@ -212,7 +212,7 @@
     }
   }
 </script>
-
+ 
 <nav>
   <div class="nav-name">Allison Rose</div>
   <div class="nav-links">
@@ -221,13 +221,13 @@
     <a href="#contact">Contact</a>
   </div>
 </nav>
-
+ 
 <div class="hero">
   <h1 class="hero-name">Allison<br>Rose</h1>
   <p class="hero-bio">Enterprise marketing leader building customer-centered campaigns at the intersection of AI, cloud, and technology. Currently leading integrated marketing for Azure at Microsoft.</p>
   <a href="#work" class="hero-cta">Selected Work ↓</a>
 </div>
-
+ 
 <section id="work">
   <div class="work-header">
     <span class="work-heading">Selected Work</span>
@@ -239,10 +239,10 @@
       <button class="filter-btn" onclick="filterCards('social', this)">Social</button>
     </div>
   </div>
-
+ 
   <table class="work-table" id="workTable">
     <tbody>
-
+ 
       <tr class="work-row" data-tags="enterprise content">
         <td class="col-index">01</td>
         <td class="col-tag">Documentary · Azure</td>
@@ -252,7 +252,7 @@
         </td>
         <td class="col-role">Strategy · GTM<br>Microsoft Azure</td>
       </tr>
-
+ 
       <tr class="work-row" data-tags="enterprise content">
         <td class="col-index">02</td>
         <td class="col-tag">Podcast · Azure</td>
@@ -262,7 +262,7 @@
         </td>
         <td class="col-role">GTM · Customer Storytelling<br>Microsoft Azure</td>
       </tr>
-
+ 
       <tr class="work-row" data-tags="enterprise content">
         <td class="col-index">03</td>
         <td class="col-tag">Research Report · Azure</td>
@@ -272,7 +272,7 @@
         </td>
         <td class="col-role">Content Strategy<br>Microsoft Azure</td>
       </tr>
-
+ 
       <tr class="work-row" data-tags="enterprise content">
         <td class="col-index">04</td>
         <td class="col-tag">Customer Evidence · Startups</td>
@@ -282,7 +282,7 @@
         </td>
         <td class="col-role">Program Strategy<br>Microsoft for Startups</td>
       </tr>
-
+ 
       <tr class="work-row" data-tags="media">
         <td class="col-index">05</td>
         <td class="col-tag">Performance Media · T-Mobile</td>
@@ -292,7 +292,7 @@
         </td>
         <td class="col-role">Paid Media Lead<br>T-Mobile</td>
       </tr>
-
+ 
       <tr class="work-row" data-tags="media">
         <td class="col-index">06</td>
         <td class="col-tag">Performance Media · T-Mobile</td>
@@ -302,7 +302,7 @@
         </td>
         <td class="col-role">Paid Media Lead<br>T-Mobile</td>
       </tr>
-
+ 
       <tr class="work-row" data-tags="social enterprise">
         <td class="col-index">07</td>
         <td class="col-tag">Esports Sponsorship · Acer</td>
@@ -312,7 +312,7 @@
         </td>
         <td class="col-role">Social Content<br>Acer</td>
       </tr>
-
+ 
       <tr class="work-row" data-tags="social">
         <td class="col-index">08</td>
         <td class="col-tag">Social Campaign · Jaguar</td>
@@ -323,11 +323,11 @@
         </td>
         <td class="col-role">Social Media Lead<br>We Are Social</td>
       </tr>
-
+ 
     </tbody>
   </table>
 </section>
-
+ 
 <section id="about">
   <div class="about-left">
     <p class="about-label">Background</p>
@@ -351,7 +351,7 @@
     </table>
   </div>
 </section>
-
+ 
 <section id="contact">
   <div class="contact-left">
     <p class="contact-label">Get in touch</p>
@@ -361,12 +361,12 @@
     <a href="https://www.linkedin.com/in/allisonrose1/" target="_blank" class="contact-link">LinkedIn ↗</a>
   </div>
 </section>
-
+ 
 <footer>
   <span>Allison Rose</span>
   <span>Seattle, WA · 2025</span>
 </footer>
-
+ 
 <script>
   function filterCards(tag, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -376,6 +376,7 @@
     });
   }
 </script>
-
+ 
 </body>
 </html>
+ 
