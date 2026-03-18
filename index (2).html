@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allison Rose</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  /* PASSWORD GATE */
+  #gate {
+    position: fixed; inset: 0; background: #fff; z-index: 9999;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 2.5rem;
+  }
+  #gate h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 2.5rem; }
+  #gate-form { display: flex; flex-direction: column; gap: 1rem; max-width: 320px; }
+  #gate-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  #gate-input {
+    border: none; border-bottom: 1px solid #000; padding: 0.6rem 0;
+    font-family: inherit; font-size: 1rem; outline: none; background: transparent;
+    letter-spacing: 0.1em;
+  }
+  #gate-input::placeholder { opacity: 0.25; }
+  #gate-submit {
+    align-self: flex-start; margin-top: 0.5rem;
+    background: none; border: none; cursor: pointer; font-family: inherit;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    border-bottom: 2px solid #000; padding-bottom: 2px; transition: opacity 0.15s;
+  }
+  #gate-submit:hover { opacity: 0.4; }
+  #gate-error { font-size: 0.78rem; opacity: 0; transition: opacity 0.2s; }
+  #gate-error.visible { opacity: 0.5; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 2.5rem;
+    background: #fff;
+    border-bottom: 1px solid #000;
+  }
+  .nav-name { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a { text-decoration: none; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.4; transition: opacity 0.15s; }
+  .nav-links a:hover { opacity: 1; }
+
+  /* HERO */
+  .hero {
+    padding: 10rem 2.5rem 6rem;
+    border-bottom: 1px solid #000;
+    max-width: 900px;
+  }
+  .hero-name {
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+  }
+  .hero-bio {
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 520px;
+    opacity: 0.55;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 2px solid #000;
+    padding-bottom: 2px;
+    transition: opacity 0.15s;
+  }
+  .hero-cta:hover { opacity: 0.4; }
+
+  /* WORK */
+  #work { padding: 5rem 2.5rem; }
+  .work-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #000;
+    padding-bottom: 1rem;
+  }
+  .work-heading { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* FILTER */
+  .filter-tabs { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .filter-btn {
+    background: none; border: none; cursor: pointer;
+    font-family: inherit; font-size: 0.75rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #000; opacity: 0.3; padding: 0;
+    transition: opacity 0.15s;
+  }
+  .filter-btn:hover, .filter-btn.active { opacity: 1; }
+  .filter-btn.active { font-weight: 700; }
+
+  /* CARDS TABLE */
+  .work-table { width: 100%; border-collapse: collapse; }
+  .work-row {
+    border-bottom: 1px solid #e5e5e5;
+    transition: background 0.1s;
+  }
+  .work-row:hover { background: #f7f7f7; }
+  .work-row td { padding: 1.6rem 1rem 1.6rem 0; vertical-align: top; }
+  .work-row td:last-child { padding-right: 0; }
+
+  .col-index { width: 3rem; font-size: 0.72rem; opacity: 0.3; padding-top: 1.8rem; }
+  .col-tag { width: 14rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.45; padding-top: 1.85rem; }
+  .col-title { font-size: 1.05rem; font-weight: 700; }
+  .col-title a { text-decoration: none; }
+  .col-title a:hover { text-decoration: underline; }
+  .col-desc { font-size: 0.83rem; opacity: 0.5; line-height: 1.6; margin-top: 0.35rem; max-width: 480px; }
+  .col-award { font-size: 0.72rem; opacity: 0.6; margin-top: 0.4rem; }
+  .col-role { width: 13rem; font-size: 0.75rem; opacity: 0.4; line-height: 1.6; padding-top: 1.85rem; text-align: right; }
+
+  /* ABOUT */
+  #about {
+    border-top: 1px solid #000;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding: 0;
+  }
+  .about-left { padding: 5rem 2.5rem; border-right: 1px solid #000; }
+  .about-right { padding: 5rem 2.5rem; }
+  .about-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+  .about-body { font-size: 0.92rem; line-height: 1.8; opacity: 0.55; max-width: 440px; }
+  .about-body p + p { margin-top: 1rem; }
+
+  .skills-table { width: 100%; border-collapse: collapse; margin-top: 0; }
+  .skills-table tr { border-bottom: 1px solid #e5e5e5; }
+  .skills-table td { padding: 0.9rem 0; font-size: 0.83rem; }
+  .skills-table td:first-child { font-weight: 700; }
+  .skills-table td:last-child { text-align: right; opacity: 0.4; font-size: 0.75rem; }
+
+  /* CONTACT */
+  #contact {
+    border-top: 1px solid #000;
+    padding: 5rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .contact-left .contact-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+  .contact-left h2 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  .contact-right { text-align: right; }
+  .contact-link {
+    display: inline-block; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+    border-bottom: 2px solid #000; padding-bottom: 2px; transition: opacity 0.15s;
+  }
+  .contact-link:hover { opacity: 0.4; }
+
+  footer { border-top: 1px solid #e5e5e5; padding: 1.2rem 2.5rem; display: flex; justify-content: space-between; font-size: 0.72rem; opacity: 0.35; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.25rem 4rem; }
+    #work { padding: 3rem 1.25rem; }
+    .work-row td { display: block; padding: 0.3rem 0; }
+    .col-index, .col-tag { display: none; }
+    .col-role { text-align: left; }
+    #about { grid-template-columns: 1fr; }
+    .about-left { border-right: none; border-bottom: 1px solid #000; padding: 3rem 1.25rem; }
+    .about-right { padding: 3rem 1.25rem; }
+    #contact { flex-direction: column; gap: 2rem; padding: 3rem 1.25rem; }
+    .contact-right { text-align: left; }
+    footer { padding: 1rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate">
+  <h1>Allison<br>Rose</h1>
+  <div id="gate-form">
+    <label id="gate-label" for="gate-input">Password</label>
+    <input id="gate-input" type="password" placeholder="········" autocomplete="off" onkeydown="if(event.key==='Enter') checkPassword()" />
+    <button id="gate-submit" onclick="checkPassword()">Enter →</button>
+    <span id="gate-error">Incorrect password.</span>
+  </div>
+</div>
+
+<script>
+  // Change the password below
+  const PASSWORD = "sayhi";
+
+  function checkPassword() {
+    const val = document.getElementById('gate-input').value;
+    const err = document.getElementById('gate-error');
+    if (val === PASSWORD) {
+      document.getElementById('gate').style.display = 'none';
+    } else {
+      err.classList.add('visible');
+      document.getElementById('gate-input').value = '';
+      document.getElementById('gate-input').focus();
+    }
+  }
+</script>
+
+<nav>
+  <div class="nav-name">Allison Rose</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1 class="hero-name">Allison<br>Rose</h1>
+  <p class="hero-bio">Enterprise marketing leader building customer-centered campaigns at the intersection of AI, cloud, and technology. Currently leading integrated marketing for Azure at Microsoft.</p>
+  <a href="#work" class="hero-cta">Selected Work ↓</a>
+</div>
+
+<section id="work">
+  <div class="work-header">
+    <span class="work-heading">Selected Work</span>
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+      <button class="filter-btn" onclick="filterCards('enterprise', this)">Enterprise</button>
+      <button class="filter-btn" onclick="filterCards('content', this)">Content</button>
+      <button class="filter-btn" onclick="filterCards('media', this)">Paid Media</button>
+      <button class="filter-btn" onclick="filterCards('social', this)">Social</button>
+    </div>
+  </div>
+
+  <table class="work-table" id="workTable">
+    <tbody>
+
+      <tr class="work-row" data-tags="enterprise content">
+        <td class="col-index">01</td>
+        <td class="col-tag">Documentary · Azure</td>
+        <td>
+          <div class="col-title"><a href="https://www.youtube.com/watch?v=7x-smg-qr2c&list=PLLasX02E8BPBCP7KdYsjKKFFQUmNEUmE9" target="_blank" rel="noopener">Cloud Cultures ↗</a></div>
+          <div class="col-desc">Global docu-series across 10+ countries on how organizations use cloud and AI to solve local challenges. 3 seasons, 6.2M+ organic views.</div>
+        </td>
+        <td class="col-role">Strategy · GTM<br>Microsoft Azure</td>
+      </tr>
+
+      <tr class="work-row" data-tags="enterprise content">
+        <td class="col-index">02</td>
+        <td class="col-tag">Podcast · Azure</td>
+        <td>
+          <div class="col-title"><a href="https://www.youtube.com/watch?v=1A9Q9bbY03A&list=PLFPUGjQjckXF5wBvtTVAP_kxNj9ZUygrj" target="_blank" rel="noopener">The Shift ↗</a></div>
+          <div class="col-desc">Top-ranked tech podcast where enterprise leaders share firsthand AI transformation stories — turning customer voices into a credibility signal for Azure.</div>
+        </td>
+        <td class="col-role">GTM · Customer Storytelling<br>Microsoft Azure</td>
+      </tr>
+
+      <tr class="work-row" data-tags="enterprise content">
+        <td class="col-index">03</td>
+        <td class="col-tag">Research Report · Azure</td>
+        <td>
+          <div class="col-title"><a href="https://azure.microsoft.com/en-us/blog/new-global-report-how-to-stand-out-in-an-ai-savvy-world/" target="_blank" rel="noopener">How to Stand Out in an AI-Savvy World ↗</a></div>
+          <div class="col-desc">Global report with MIT Technology Review Insights on how businesses use AI customization to stay competitive. Targeted enterprise decision-makers across key verticals.</div>
+        </td>
+        <td class="col-role">Content Strategy<br>Microsoft Azure</td>
+      </tr>
+
+      <tr class="work-row" data-tags="enterprise content">
+        <td class="col-index">04</td>
+        <td class="col-tag">Customer Evidence · Startups</td>
+        <td>
+          <div class="col-title"><a href="https://www.instagram.com/p/CwQElRyNRYq/" target="_blank" rel="noopener">Startup Customer Stories ↗</a></div>
+          <div class="col-desc">Built the customer evidence program from scratch — 20+ industry-specific stories of founders building with Azure AI, atomized into multi-format content systems.</div>
+        </td>
+        <td class="col-role">Program Strategy<br>Microsoft for Startups</td>
+      </tr>
+
+      <tr class="work-row" data-tags="media">
+        <td class="col-index">05</td>
+        <td class="col-tag">Performance Media · T-Mobile</td>
+        <td>
+          <div class="col-title"><a href="https://www.ispot.tv/ad/IS1i/t-mobile-super-bowl-2019-whats-for-dinner-song-by-fine-young-cannibals" target="_blank" rel="noopener">T-Mobile Super Bowl 2019 ↗</a></div>
+          <div class="col-desc">Paid media lead for Super Bowl LIII — a flight of four spots reaching 100M+ viewers. Cross-functional alignment between media, creative, and analytics.</div>
+        </td>
+        <td class="col-role">Paid Media Lead<br>T-Mobile</td>
+      </tr>
+
+      <tr class="work-row" data-tags="media">
+        <td class="col-index">06</td>
+        <td class="col-tag">Performance Media · T-Mobile</td>
+        <td>
+          <div class="col-title"><a href="https://www.ispot.tv/ad/ZEro/t-mobile-super-bowl-2020-mama-tests-5g-featuring-anthony-anderson" target="_blank" rel="noopener">T-Mobile Super Bowl 2020 ↗</a></div>
+          <div class="col-desc">"Mama Tests 5G" featuring Anthony Anderson — T-Mobile's nationwide 5G launch to 100M+ viewers at Super Bowl LIV.</div>
+        </td>
+        <td class="col-role">Paid Media Lead<br>T-Mobile</td>
+      </tr>
+
+      <tr class="work-row" data-tags="social enterprise">
+        <td class="col-index">07</td>
+        <td class="col-tag">Esports Sponsorship · Acer</td>
+        <td>
+          <div class="col-title"><a href="https://www.prnewswire.com/news-releases/acer-named-official-sponsor-and-monitor-partner-for-league-of-legends-esports-in-2017-300446903.html" target="_blank" rel="noopener">Acer Predator × League of Legends ↗</a></div>
+          <div class="col-desc">Social content lead for Acer's Official Sponsorship of League of Legends esports — World Championships, Mid-Season Invitational, and LCS.</div>
+        </td>
+        <td class="col-role">Social Content<br>Acer</td>
+      </tr>
+
+      <tr class="work-row" data-tags="social">
+        <td class="col-index">08</td>
+        <td class="col-tag">Social Campaign · Jaguar</td>
+        <td>
+          <div class="col-title"><a href="https://wearesocial.com/us/blog/2014/03/turn-britain-introducing-british-icon/" target="_blank" rel="noopener">Jaguar: Your Turn Britain ↗</a></div>
+          <div class="col-desc">Socially-led campaign launching the Jaguar F-TYPE featuring Jamie Campbell Bower. 34M reach, 40K+ new social fans.</div>
+          <div class="col-award">🏆 2× CIM Marketing Excellence Awards</div>
+        </td>
+        <td class="col-role">Social Media Lead<br>We Are Social</td>
+      </tr>
+
+    </tbody>
+  </table>
+</section>
+
+<section id="about">
+  <div class="about-left">
+    <p class="about-label">Background</p>
+    <div class="about-body">
+      <p>I'm a marketing leader who has spent 10+ years helping technology brands turn complex ideas into stories people actually want to engage with — from documentary films and podcasts to integrated campaigns that move enterprise buyers.</p>
+      <p>At Microsoft, I've led content and integrated marketing for Azure, built a customer evidence engine for Microsoft for Startups, and produced original content franchises reaching millions of viewers globally.</p>
+      <p>Before Microsoft, I led performance media at T-Mobile and built social programs for global brands at agencies in London, San Francisco, and Madrid.</p>
+      <p>I believe the best B2B marketing borrows freely from consumer instincts: specific, human, impossible to ignore.</p>
+    </div>
+  </div>
+  <div class="about-right">
+    <p class="about-label">Expertise</p>
+    <table class="skills-table">
+      <tr><td>Customer Evidence & Advocacy</td><td>Built from scratch</td></tr>
+      <tr><td>Integrated Campaign Strategy</td><td>End-to-end</td></tr>
+      <tr><td>Documentary & Podcast Production</td><td>Millions of views</td></tr>
+      <tr><td>Enterprise B2B GTM</td><td>AI & Cloud</td></tr>
+      <tr><td>Performance & Paid Media</td><td>$1B+ managed</td></tr>
+      <tr><td>Team & Budget Leadership</td><td>$15M+ investment</td></tr>
+      <tr><td>AI-Powered Marketing Workflows</td><td>In practice</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-left">
+    <p class="contact-label">Get in touch</p>
+    <h2>Let's<br>talk</h2>
+  </div>
+  <div class="contact-right">
+    <a href="https://www.linkedin.com/in/allisonrose1/" target="_blank" class="contact-link">LinkedIn ↗</a>
+  </div>
+</section>
+
+<footer>
+  <span>Allison Rose</span>
+  <span>Seattle, WA · 2025</span>
+</footer>
+
+<script>
+  function filterCards(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.work-row').forEach(row => {
+      row.style.display = (tag === 'all' || (row.dataset.tags || '').includes(tag)) ? '' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>
