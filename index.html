@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allison Rose — Marketing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0f0f;
+    --paper: #f5f2ec;
+    --warm: #c8a96e;
+    --muted: #7a7570;
+    --rule: #d9d4cc;
+    --card: #fff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 3rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 3rem 5rem 3rem;
+    border-right: 1px solid var(--rule);
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 1.0;
+    margin-bottom: 1.5rem;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--muted);
+  }
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 460px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .hero-cta:hover { background: var(--warm); }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+    gap: 0;
+  }
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--rule);
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.6s forwards;
+  }
+  .stat-row:nth-child(1) { animation-delay: 0.3s; }
+  .stat-row:nth-child(2) { animation-delay: 0.45s; }
+  .stat-row:nth-child(3) { animation-delay: 0.6s; }
+  .stat-row:nth-child(4) { animation-delay: 0.75s; }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: right;
+    max-width: 180px;
+    line-height: 1.4;
+    padding-top: 0.3rem;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 3rem; }
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 3.5rem;
+  }
+
+  /* WORK */
+  #work { background: var(--ink); color: var(--paper); }
+  #work .section-title { color: var(--paper); }
+  #work .section-label { color: var(--warm); }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5px;
+    background: #2a2a2a;
+    border: 1.5px solid #2a2a2a;
+  }
+  .work-card {
+    background: var(--ink);
+    padding: 2.5rem;
+    text-decoration: none;
+    color: var(--paper);
+    display: block;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .work-card::after {
+    content: '↗';
+    position: absolute;
+    top: 2rem; right: 2rem;
+    font-size: 1.2rem;
+    color: var(--warm);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: all 0.2s;
+  }
+  .work-card:hover { background: #1a1a1a; }
+  .work-card:hover::after { opacity: 1; transform: translateY(0); }
+
+  .card-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .card-tag::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 1px;
+    background: var(--warm);
+  }
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .card-desc {
+    font-size: 0.88rem;
+    color: #999;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .card-meta {
+    font-size: 0.75rem;
+    color: #555;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ABOUT */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+  }
+  .about-left {
+    padding: 6rem 3rem;
+    border-right: 1px solid var(--rule);
+  }
+  .about-right {
+    padding: 6rem 3rem;
+    background: #faf8f4;
+  }
+  .about-body {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #444;
+    max-width: 480px;
+  }
+  .about-body p + p { margin-top: 1.2rem; }
+
+  .skills-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
+  .skill-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.88rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .skill-item strong { color: var(--ink); font-weight: 500; }
+
+  /* CONTACT */
+  #contact {
+    background: var(--warm);
+    text-align: center;
+    padding: 6rem 3rem;
+  }
+  #contact .section-title { color: var(--ink); margin-bottom: 1rem; }
+  #contact .section-label { color: rgba(0,0,0,0.5); }
+  .contact-sub { color: rgba(0,0,0,0.6); margin-bottom: 2.5rem; font-size: 1rem; }
+  .contact-link {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+  .contact-link:hover { opacity: 0.8; }
+
+  /* FOOTER */
+  footer {
+    padding: 1.5rem 3rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 3rem 1.5rem; border-right: none; }
+    .hero-right { padding: 2rem 1.5rem; border-top: 1px solid var(--rule); }
+    section { padding: 4rem 1.5rem; }
+    #about { grid-template-columns: 1fr; }
+    .about-left, .about-right { padding: 3rem 1.5rem; border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Allison Rose</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Marketing Leader · Seattle, WA</p>
+    <h1 class="hero-name">Allison<br><em>Rose</em></h1>
+    <p class="hero-bio">Enterprise marketing leader building customer-centered campaigns at the intersection of AI, cloud, and technology. Currently leading integrated marketing for Azure at Microsoft.</p>
+    <a href="#work" class="hero-cta">View Selected Work</a>
+  </div>
+  <div class="hero-right">
+    <div class="stat-row">
+      <span class="stat-num">6.2M+</span>
+      <span class="stat-label">Organic Views — Cloud Cultures Docu-Series</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-num">50K+</span>
+      <span class="stat-label">Startups Driven to Microsoft Stack</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-num">$15M+</span>
+      <span class="stat-label">Marketing Investment Managed, Azure</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-num">10+</span>
+      <span class="stat-label">Countries Featured in Cloud Cultures</span>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <p class="section-label">Selected Work</p>
+  <h2 class="section-title">Campaigns &amp; Programs</h2>
+
+  <div class="work-grid">
+
+    <a class="work-card" href="https://www.youtube.com/watch?v=7x-smg-qr2c&list=PLLasX02E8BPBCP7KdYsjKKFFQUmNEUmE9" target="_blank" rel="noopener">
+      <p class="card-tag">Documentary Series · Azure</p>
+      <h3 class="card-title">Cloud Cultures</h3>
+      <p class="card-desc">A global docu-series capturing how organizations across 10+ countries use cloud and AI to solve local challenges and drive global impact. 3 seasons. 6.2M+ organic views.</p>
+      <p class="card-meta">Strategy · Executive Production · GTM · Microsoft Azure</p>
+    </a>
+
+    <a class="work-card" href="https://www.youtube.com/watch?v=1A9Q9bbY03A&list=PLFPUGjQjckXF5wBvtTVAP_kxNj9ZUygrj" target="_blank" rel="noopener">
+      <p class="card-tag">Podcast · Azure</p>
+      <h3 class="card-title">The Shift</h3>
+      <p class="card-desc">A top-ranked technology podcast featuring enterprise executives sharing firsthand AI transformation stories. Uses real customer voices to build platform credibility across industry verticals.</p>
+      <p class="card-meta">Executive Production · GTM · Customer Storytelling · Microsoft Azure</p>
+    </a>
+
+    <a class="work-card" href="https://www.instagram.com/p/CwQElRyNRYq/" target="_blank" rel="noopener">
+      <p class="card-tag">Customer Evidence · Microsoft for Startups</p>
+      <h3 class="card-title">Startup Customer Stories</h3>
+      <p class="card-desc">Built the customer evidence program from scratch — strategy through production. 20+ industry-specific stories of founders building with Azure AI, atomized into multi-format content systems to maximize reach.</p>
+      <p class="card-meta">Program Strategy · Executive Production · Content Systems · Microsoft for Startups</p>
+    </a>
+
+    <a class="work-card" href="https://www.ispot.tv/ad/IS1i/t-mobile-super-bowl-2019-whats-for-dinner-song-by-fine-young-cannibals" target="_blank" rel="noopener">
+      <p class="card-tag">Performance Media · T-Mobile</p>
+      <h3 class="card-title">T-Mobile Super Bowl 2019</h3>
+      <p class="card-desc">Media lead for T-Mobile's Super Bowl LIII campaign — a flight of four ads reaching over 100M viewers. Drove cross-functional alignment between media, creative, and analytics to maximize performance and brand impact.</p>
+      <p class="card-meta">Media Strategy · Investment · Super Bowl LIII · T-Mobile</p>
+    </a>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <p class="section-label">Background</p>
+    <h2 class="section-title">A bit<br><em style="font-family:'DM Serif Display',serif; font-style:italic; color:var(--muted);">about me</em></h2>
+    <div class="about-body">
+      <p>I'm a marketing leader who has spent 10+ years helping technology brands turn complex ideas into stories people actually want to engage with — from documentary films and podcasts to integrated campaigns that move enterprise buyers.</p>
+      <p>At Microsoft, I've led content and integrated marketing for Azure, built a customer evidence engine for Microsoft for Startups, and executive produced original content franchises that have reached millions of viewers across the globe.</p>
+      <p>Before Microsoft, I led performance media at T-Mobile and built social marketing programs for global brands at agencies in London, San Francisco, and Madrid.</p>
+      <p>I believe the best B2B marketing borrows freely from consumer instincts: it's specific, human, and impossible to ignore.</p>
+    </div>
+  </div>
+  <div class="about-right">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title" style="font-size:1.8rem;">What I do</h2>
+    <div class="skills-list">
+      <div class="skill-item"><strong>Customer Evidence & Advocacy</strong><span>Built from scratch</span></div>
+      <div class="skill-item"><strong>Integrated Campaign Strategy</strong><span>End-to-end</span></div>
+      <div class="skill-item"><strong>Documentary & Podcast Production</strong><span>Executive produced</span></div>
+      <div class="skill-item"><strong>Enterprise B2B GTM</strong><span>AI & Cloud</span></div>
+      <div class="skill-item"><strong>Performance & Paid Media</strong><span>$1B+ managed</span></div>
+      <div class="skill-item"><strong>Team & Budget Leadership</strong><span>$15M+ investment</span></div>
+      <div class="skill-item"><strong>AI-Powered Marketing Workflows</strong><span>In practice</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get in touch</p>
+  <h2 class="section-title">Let's talk</h2>
+  <p class="contact-sub">Open to select opportunities and conversations.</p>
+  <a href="https://www.linkedin.com/in/allisonrose1/" target="_blank" class="contact-link">Connect on LinkedIn</a>
+</section>
+
+<footer>
+  <span>© 2025 Allison Rose</span>
+  <span>Seattle, WA</span>
+</footer>
+
+</body>
+</html>
