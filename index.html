@@ -7,7 +7,7 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
- 
+
   body {
     background: #fff;
     color: #000;
@@ -16,9 +16,9 @@
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
- 
+
   a { color: inherit; }
- 
+
   /* PASSWORD GATE */
   #gate {
     position: fixed; inset: 0; background: #fff; z-index: 9999;
@@ -43,7 +43,7 @@
   #gate-submit:hover { opacity: 0.4; }
   #gate-error { font-size: 0.78rem; opacity: 0; transition: opacity 0.2s; }
   #gate-error.visible { opacity: 0.5; }
- 
+
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -56,7 +56,7 @@
   .nav-links { display: flex; gap: 2.5rem; }
   .nav-links a { text-decoration: none; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.4; transition: opacity 0.15s; }
   .nav-links a:hover { opacity: 1; }
- 
+
   /* HERO */
   .hero {
     padding: 10rem 2.5rem 6rem;
@@ -89,7 +89,7 @@
     transition: opacity 0.15s;
   }
   .hero-cta:hover { opacity: 0.4; }
- 
+
   /* WORK */
   #work { padding: 5rem 2.5rem; }
   .work-header {
@@ -99,7 +99,7 @@
     padding-bottom: 1rem;
   }
   .work-heading { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
- 
+
   /* FILTER */
   .filter-tabs { display: flex; gap: 1.5rem; flex-wrap: wrap; }
   .filter-btn {
@@ -110,7 +110,7 @@
   }
   .filter-btn:hover, .filter-btn.active { opacity: 1; }
   .filter-btn.active { font-weight: 700; }
- 
+
   /* CARDS TABLE */
   .work-table { width: 100%; border-collapse: collapse; }
   .work-row {
@@ -120,7 +120,7 @@
   .work-row:hover { background: #f7f7f7; }
   .work-row td { padding: 1.6rem 1rem 1.6rem 0; vertical-align: top; }
   .work-row td:last-child { padding-right: 0; }
- 
+
   .col-index { width: 3rem; font-size: 0.72rem; opacity: 0.3; padding-top: 1.8rem; }
   .col-tag { width: 14rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.45; padding-top: 1.85rem; }
   .col-title { font-size: 1.05rem; font-weight: 700; }
@@ -129,7 +129,7 @@
   .col-desc { font-size: 0.83rem; opacity: 0.5; line-height: 1.6; margin-top: 0.35rem; max-width: 480px; }
   .col-award { font-size: 0.72rem; opacity: 0.6; margin-top: 0.4rem; }
   .col-role { width: 13rem; font-size: 0.75rem; opacity: 0.4; line-height: 1.6; padding-top: 1.85rem; text-align: right; }
- 
+
   /* ABOUT */
   #about {
     border-top: 1px solid #000;
@@ -141,13 +141,13 @@
   .about-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
   .about-body { font-size: 0.92rem; line-height: 1.8; opacity: 0.55; max-width: 440px; }
   .about-body p + p { margin-top: 1rem; }
- 
+
   .skills-table { width: 100%; border-collapse: collapse; margin-top: 0; }
   .skills-table tr { border-bottom: 1px solid #e5e5e5; }
   .skills-table td { padding: 0.9rem 0; font-size: 0.83rem; }
   .skills-table td:first-child { font-weight: 700; }
   .skills-table td:last-child { text-align: right; opacity: 0.4; font-size: 0.75rem; }
- 
+
   /* CONTACT */
   #contact {
     border-top: 1px solid #000;
@@ -163,9 +163,9 @@
     border-bottom: 2px solid #000; padding-bottom: 2px; transition: opacity 0.15s;
   }
   .contact-link:hover { opacity: 0.4; }
- 
+
   footer { border-top: 1px solid #e5e5e5; padding: 1.2rem 2.5rem; display: flex; justify-content: space-between; font-size: 0.72rem; opacity: 0.35; }
- 
+
   @media (max-width: 768px) {
     nav { padding: 1rem 1.25rem; }
     .nav-links { display: none; }
@@ -184,7 +184,7 @@
 </style>
 </head>
 <body>
- 
+
 <!-- PASSWORD GATE -->
 <div id="gate">
   <h1>Allison<br>Rose</h1>
@@ -195,11 +195,11 @@
     <span id="gate-error">Incorrect password.</span>
   </div>
 </div>
- 
+
 <script>
   // Change the password below
   const PASSWORD = "sayhi";
- 
+
   function checkPassword() {
     const val = document.getElementById('gate-input').value;
     const err = document.getElementById('gate-error');
@@ -212,7 +212,7 @@
     }
   }
 </script>
- 
+
 <nav>
   <div class="nav-name">Allison Rose</div>
   <div class="nav-links">
@@ -221,13 +221,13 @@
     <a href="#contact">Contact</a>
   </div>
 </nav>
- 
+
 <div class="hero">
   <h1 class="hero-name">Allison<br>Rose</h1>
   <p class="hero-bio">Enterprise marketing leader building customer-centered campaigns at the intersection of AI, cloud, and technology. Currently leading integrated marketing for Azure at Microsoft.</p>
   <a href="#work" class="hero-cta">Selected Work ↓</a>
 </div>
- 
+
 <section id="work">
   <div class="work-header">
     <span class="work-heading">Selected Work</span>
@@ -239,10 +239,10 @@
       <button class="filter-btn" onclick="filterCards('social', this)">Social</button>
     </div>
   </div>
- 
+
   <table class="work-table" id="workTable">
     <tbody>
- 
+
       <tr class="work-row" data-tags="enterprise content">
         <td class="col-index">01</td>
         <td class="col-tag">Documentary · Azure</td>
@@ -252,7 +252,7 @@
         </td>
         <td class="col-role">Strategy · GTM<br>Microsoft Azure</td>
       </tr>
- 
+
       <tr class="work-row" data-tags="enterprise content">
         <td class="col-index">02</td>
         <td class="col-tag">Podcast · Azure</td>
@@ -262,9 +262,79 @@
         </td>
         <td class="col-role">GTM · Customer Storytelling<br>Microsoft Azure</td>
       </tr>
- 
+
       <tr class="work-row" data-tags="enterprise content">
         <td class="col-index">03</td>
+        <td class="col-tag">Event · Azure</td>
+        <td>
+          <div class="col-title"><a href="https://www.microsoft.com/en-us/events/launch-events/migrate-and-modernize-summit" target="_blank" rel="noopener">Microsoft Azure Summit ↗</a></div>
+          <div class="col-desc">Microsoft's flagship Azure launch event putting customers at the center of new product announcements — featuring real-world stories to drive adoption across migration and modernization audiences.</div>
+        </td>
+        <td class="col-role">Marketing Lead<br>Microsoft Azure</td>
+      </tr>
+
+      <tr class="work-row" data-tags="enterprise content">
+        <td class="col-index">04</td>
+        <td class="col-tag">Webinar · Azure</td>
+        <td>
+          <div class="col-title"><a href="https://info.microsoft.com/ww-ondemand-Color-Meets-Code-Pantones-Agentic-AI-Journey-on-Azure.html?LCID=EN-US" target="_blank" rel="noopener">Color Meets Code: Pantone's Agentic AI Journey on Azure ↗</a></div>
+          <div class="col-desc">On-demand webinar featuring Pantone's engineering team sharing how they built an agentic AI solution on Azure databases — turning a recognizable global brand into an enterprise AI proof point.</div>
+        </td>
+        <td class="col-role">Content · Webinar<br>Microsoft Azure</td>
+      </tr>
+
+      <tr class="work-row" data-tags="enterprise content">
+        <td class="col-index">05</td>
+        <td class="col-tag">Webinar · Azure</td>
+        <td>
+          <div class="col-title"><a href="https://info.microsoft.com/ww-thankyou-learn-from-the-leaders-generative-ai-solutions-video.html" target="_blank" rel="noopener">Learn from the Leaders: Generative AI Solutions ↗</a></div>
+          <div class="col-desc">Webinar featuring AT&T sharing how they built a generative AI platform using Azure AI Search and RAG — translating a Fortune 500 transformation story into a proof point for enterprise buyers.</div>
+        </td>
+        <td class="col-role">Content · Webinar<br>Microsoft Azure</td>
+      </tr>
+
+      <tr class="work-row" data-tags="enterprise content">
+        <td class="col-index">06</td>
+        <td class="col-tag">Ebook · Azure</td>
+        <td>
+          <div class="col-title"><a href="https://marketingassets.microsoft.com/gdc/gdcE9DHOv/original" target="_blank" rel="noopener">Real-World Use Cases Powered by Azure Databases ↗</a></div>
+          <div class="col-desc">Customer-led ebook featuring OpenAI as a flagship story — demonstrating how Azure databases power AI workloads at scale for enterprise and developer audiences.</div>
+        </td>
+        <td class="col-role">Content Strategy<br>Microsoft Azure</td>
+      </tr>
+
+      <tr class="work-row" data-tags="enterprise content">
+        <td class="col-index">07</td>
+        <td class="col-tag">Ebook · Azure</td>
+        <td>
+          <div class="col-title"><a href="https://marketingassets.microsoft.com/gdc/gdcnpWIES/original" target="_blank" rel="noopener">Winning with AI: Three Stories of Intelligent App Success ↗</a></div>
+          <div class="col-desc">Multi-customer ebook featuring MARS, BMW, and Air India — showcasing how global enterprises are building intelligent apps on Azure AI across industries.</div>
+        </td>
+        <td class="col-role">Content Strategy<br>Microsoft Azure</td>
+      </tr>
+
+      <tr class="work-row" data-tags="enterprise content">
+        <td class="col-index">08</td>
+        <td class="col-tag">Ebook · Azure</td>
+        <td>
+          <div class="col-title"><a href="https://marketingassets.microsoft.com/gdc/gdc8Cweuc/original" target="_blank" rel="noopener">A Leader's Guide to Building High-Impact Generative AI Apps ↗</a></div>
+          <div class="col-desc">Leadership-focused ebook integrating lightweight customer examples to make the case for Azure as the platform for building production-grade generative AI applications.</div>
+        </td>
+        <td class="col-role">Content Strategy<br>Microsoft Azure</td>
+      </tr>
+
+      <tr class="work-row" data-tags="enterprise content social">
+        <td class="col-index">09</td>
+        <td class="col-tag">Social Content · Azure</td>
+        <td>
+          <div class="col-title"><a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7320476528360747010/" target="_blank" rel="noopener">Customer Voice Social Content ↗</a></div>
+          <div class="col-desc">LinkedIn content series featuring real customer stories and voices — translating enterprise AI transformation into social-first formats to drive awareness and engagement among technical decision-makers.</div>
+        </td>
+        <td class="col-role">Social Content<br>Microsoft Azure</td>
+      </tr>
+
+      <tr class="work-row" data-tags="enterprise content">
+        <td class="col-index">10</td>
         <td class="col-tag">Research Report · Azure</td>
         <td>
           <div class="col-title"><a href="https://azure.microsoft.com/en-us/blog/new-global-report-how-to-stand-out-in-an-ai-savvy-world/" target="_blank" rel="noopener">How to Stand Out in an AI-Savvy World ↗</a></div>
@@ -272,9 +342,9 @@
         </td>
         <td class="col-role">Content Strategy<br>Microsoft Azure</td>
       </tr>
- 
+
       <tr class="work-row" data-tags="enterprise content">
-        <td class="col-index">04</td>
+        <td class="col-index">11</td>
         <td class="col-tag">Customer Evidence · Startups</td>
         <td>
           <div class="col-title"><a href="https://www.instagram.com/p/CwQElRyNRYq/" target="_blank" rel="noopener">Startup Customer Stories ↗</a></div>
@@ -282,9 +352,9 @@
         </td>
         <td class="col-role">Program Strategy<br>Microsoft for Startups</td>
       </tr>
- 
+
       <tr class="work-row" data-tags="media">
-        <td class="col-index">05</td>
+        <td class="col-index">12</td>
         <td class="col-tag">Performance Media · T-Mobile</td>
         <td>
           <div class="col-title"><a href="https://www.ispot.tv/ad/IS1i/t-mobile-super-bowl-2019-whats-for-dinner-song-by-fine-young-cannibals" target="_blank" rel="noopener">T-Mobile Super Bowl 2019 ↗</a></div>
@@ -292,9 +362,9 @@
         </td>
         <td class="col-role">Paid Media Lead<br>T-Mobile</td>
       </tr>
- 
+
       <tr class="work-row" data-tags="media">
-        <td class="col-index">06</td>
+        <td class="col-index">13</td>
         <td class="col-tag">Performance Media · T-Mobile</td>
         <td>
           <div class="col-title"><a href="https://www.ispot.tv/ad/ZEro/t-mobile-super-bowl-2020-mama-tests-5g-featuring-anthony-anderson" target="_blank" rel="noopener">T-Mobile Super Bowl 2020 ↗</a></div>
@@ -302,9 +372,9 @@
         </td>
         <td class="col-role">Paid Media Lead<br>T-Mobile</td>
       </tr>
- 
+
       <tr class="work-row" data-tags="social enterprise">
-        <td class="col-index">07</td>
+        <td class="col-index">14</td>
         <td class="col-tag">Esports Sponsorship · Acer</td>
         <td>
           <div class="col-title"><a href="https://www.prnewswire.com/news-releases/acer-named-official-sponsor-and-monitor-partner-for-league-of-legends-esports-in-2017-300446903.html" target="_blank" rel="noopener">Acer Predator × League of Legends ↗</a></div>
@@ -312,9 +382,9 @@
         </td>
         <td class="col-role">Social Content<br>Acer</td>
       </tr>
- 
+
       <tr class="work-row" data-tags="social">
-        <td class="col-index">08</td>
+        <td class="col-index">15</td>
         <td class="col-tag">Social Campaign · Jaguar</td>
         <td>
           <div class="col-title"><a href="https://wearesocial.com/us/blog/2014/03/turn-britain-introducing-british-icon/" target="_blank" rel="noopener">Jaguar: Your Turn Britain ↗</a></div>
@@ -323,16 +393,16 @@
         </td>
         <td class="col-role">Social Media Lead<br>We Are Social</td>
       </tr>
- 
+
     </tbody>
   </table>
 </section>
- 
+
 <section id="about">
   <div class="about-left">
     <p class="about-label">Background</p>
     <div class="about-body">
-      <p>I'm a marketing leader who has spent 10+ years helping technology brands turn complex ideas into stories people actually want to engage with — from documentary films and podcasts to integrated campaigns that move enterprise buyers.</p>
+      <p>I'm a marketing leader who has spent 15+ years helping technology brands turn complex ideas into stories people actually want to engage with — from documentary films and podcasts to integrated campaigns that move enterprise buyers.</p>
       <p>At Microsoft, I've led content and integrated marketing for Azure, built a customer evidence engine for Microsoft for Startups, and produced original content franchises reaching millions of viewers globally.</p>
       <p>Before Microsoft, I led performance media at T-Mobile and built social programs for global brands at agencies in London, San Francisco, and Madrid.</p>
       <p>I believe the best B2B marketing borrows freely from consumer instincts: specific, human, impossible to ignore.</p>
@@ -351,7 +421,7 @@
     </table>
   </div>
 </section>
- 
+
 <section id="contact">
   <div class="contact-left">
     <p class="contact-label">Get in touch</p>
@@ -361,12 +431,12 @@
     <a href="https://www.linkedin.com/in/allisonrose1/" target="_blank" class="contact-link">LinkedIn ↗</a>
   </div>
 </section>
- 
+
 <footer>
   <span>Allison Rose</span>
   <span>Seattle, WA · 2025</span>
 </footer>
- 
+
 <script>
   function filterCards(tag, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -376,6 +446,6 @@
     });
   }
 </script>
- 
+
 </body>
 </html>
